@@ -4,6 +4,10 @@ var app = express();
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
+app.get('/', function (req,res) {
+  res.render('main');
+});
+
 app.get('/hello', function (req,res) {
   res.render('hello');
   console.log('get request');
