@@ -4,7 +4,7 @@ var app = express();
 var mongoose = require('mongoose');
 
 //set up db connection
-mongoose.connect("mongodb://test:testpass@ds123331.mlab.com:23331/coplayingmyapp");
+mongoose.connect(process.env.MONGO_DB);
 var db = mongoose.connection;
 db.once("open",function () {
   console.log("DB connected!");
