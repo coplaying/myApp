@@ -28,7 +28,7 @@ var Post = mongoose.model('post',postSchema);
 app.set("view engine", "ejs");
 
 //set middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
