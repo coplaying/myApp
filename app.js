@@ -62,7 +62,7 @@ app.get('/posts/:id/edit', function (req,res) {
   });
 }); //edit
 app.put('/posts/:id', function (req,res) {
-  req.body.post.updatedAt-Date.now();
+  req.body.post.updatedAt=Date.now();
   Post.findByIdAndUpdate(req.params.id, req.body.post, function (err,post) {
     if(err) return res.json({success:false, message:err});
     res.redirect('/posts/'+req.params.id);
