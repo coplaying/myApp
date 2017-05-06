@@ -85,6 +85,9 @@ passport.use('local-login',
 );
 
 //set routes
+app.get('/', function (req,res) {
+  res.redirect('/posts');
+});
 app.get('/posts', function (req,res) {
   Post.find({}).sort('-createdAt').exec(function (err,posts) {
     if(err) return res.json({success:false, message:err});
@@ -125,22 +128,6 @@ app.delete('/posts/:id', function (req,res) {
     res.redirect('/posts');
   });
 }); //destroy
-
-app.get('/', function (req,res) {
-  Data.findOne({name:"myData"},function (err,data) {
-    if(err) return console.log("Data ERROR:",err);
-    data.count++;
-    data.save(function (err) {
-      if(err) return console.log("Data ERROR:",err);
-      res.render('main',data);
-    });
-  });
-});
-
-app.get('/hello', function (req,res) {
-  res.render('hello');
-  console.log('get request');
-});
 
 //start server
 app.listen(3000, function () {
